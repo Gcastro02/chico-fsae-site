@@ -1,887 +1,1154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Chico State Formula SAE</title>
-  <meta name="description" content="Chico State Formula SAE — Precision Motorsport Engineering" />
-  <link rel="icon" type="image/jpeg" href="images/institutional-wildcat.jpg" />
-  <link rel="shortcut icon" href="images/institutional-wildcat.jpg" />
-  <link rel="apple-touch-icon" href="images/institutional-wildcat.jpg" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Central Cash &amp; Carry | San Jose Restaurant &amp; Packaging Supplies</title>
+  <meta name="description" content="Central Cash & Carry in San Jose offers restaurant supplies, packaging, catering supplies, janitorial products, party goods, and bulk everyday essentials. Serving the Bay Area for 20+ years." />
 
-  <!-- Fonts (Google). Swap if you want fully local. -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    :root{
-      --bg:#070709;
-      --panel:#0f0f12;
-      --panel2:#111116;
-      --text:#f2f2f4;
-      --muted:#b4b4bd;
-      --muted2:#8b8b96;
-      --line:#1b1b22;
-
-      --red:#d8453d;
-      --red2:#ff4d43;
-      --yellow:#e7c84a;
-      --white:#ffffff;
-
-      --shadow: 0 20px 60px rgba(0,0,0,.55);
-      --radius: 18px;
-      --max: 1160px;
-
-      --h1: clamp(46px, 6vw, 92px);
-      --h2: clamp(34px, 4.2vw, 64px);
-      --h3: 28px;
+    :root {
+      --bg: #ffffff;
+      --bg-soft: #f6f8fb;
+      --bg-deep: #0f1b2d;
+      --card: #ffffff;
+      --ink: #14202e;
+      --muted: #5b6b7d;
+      --line: #e7ecf2;
+      --accent: #e0512b;
+      --accent-dark: #b93c19;
+      --accent-soft: #fff1ec;
+      --blue: #15324f;
+      --blue-soft: #eef3f9;
+      --shadow-sm: 0 1px 2px rgba(15, 27, 45, 0.06), 0 4px 14px rgba(15, 27, 45, 0.05);
+      --shadow-md: 0 10px 30px rgba(15, 27, 45, 0.10);
+      --shadow-lg: 0 24px 60px rgba(15, 27, 45, 0.16);
+      --radius: 16px;
+      --radius-lg: 22px;
+      --max: 1200px;
     }
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 700px at 50% -200px, rgba(216,69,61,.18), transparent 65%),
-                  radial-gradient(900px 500px at 20% 10%, rgba(231,200,74,.08), transparent 60%),
-                  var(--bg);
-      color:var(--text);
-      overflow-x:hidden;
-    }
-    a{color:inherit; text-decoration:none}
-    img{max-width:100%; display:block}
-
-    /* Subtle HUD lines */
-    .hud-lines::before,
-    .hud-lines::after{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      opacity:.35;
-      background:
-        linear-gradient(to right, rgba(216,69,61,.18), transparent 35%, transparent 65%, rgba(216,69,61,.18)) 0 0/100% 100%,
-        linear-gradient(to bottom, rgba(231,200,74,.12), transparent 22%, transparent 78%, rgba(231,200,74,.12)) 0 0/100% 100%;
-      mix-blend-mode:screen;
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .container{max-width:var(--max); margin:0 auto; padding:0 22px;}
-    .mono{font-family:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
-    .kicker{
-      letter-spacing:.45em;
-      text-transform:uppercase;
-      font-size:12px;
-      color:var(--yellow);
+    h1, h2, h3, .brand { font-family: "Plus Jakarta Sans", "Inter", sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
     }
 
-    /* Header */
-    .header{
-      position:sticky; top:0; z-index:30;
-      backdrop-filter: blur(10px);
-      background: rgba(7,7,9,.65);
-      border-bottom:1px solid rgba(216,69,61,.25);
-    }
-    .header-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:16px 0;
-      gap:14px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      min-width: 220px;
-    }
-    .logo-mark{
-      width:44px; height:44px; border-radius:12px;
-      display:grid; place-items:center;
-    }
-    .logo-mark img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      border-radius:8px;
-    }
-    .brand b{display:block; font-size:13px; line-height:1.1}
-    .brand span{display:block; font-size:11px; color:var(--muted2); margin-top:2px}
-
-    .nav{
-      display:flex; gap:28px; align-items:center;
-      font-weight:600; color:rgba(242,242,244,.9);
-    }
-    .nav a{
-      opacity:.86;
-      position:relative;
-      padding:6px 0;
-    }
-    .nav a:hover{opacity:1}
-    .nav a.active::after{
-      content:"";
-      position:absolute; left:0; right:0; bottom:-10px;
-      height:2px; background:var(--yellow);
-      box-shadow: 0 0 18px rgba(231,200,74,.35);
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
     }
 
-    .header-actions{
-      display:flex; align-items:center; gap:10px;
-      min-width: 220px;
-      justify-content:flex-end;
+    /* ---------- Top bar ---------- */
+    .topbar {
+      background: var(--bg-deep);
+      color: #d9e2ee;
+      font-size: 13.5px;
     }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:12px 16px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      color:var(--text);
-      font-weight:700;
-      letter-spacing:.02em;
-      transition:.18s transform, .18s background, .18s border;
-      cursor:pointer;
-      user-select:none;
-      text-transform:uppercase;
-      font-size:12px;
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding: 9px 0;
     }
-    .btn:hover{transform: translateY(-1px); border-color: rgba(231,200,74,.25)}
-    .btn-primary{
-      background: linear-gradient(180deg, rgba(216,69,61,.95), rgba(216,69,61,.75));
-      border-color: rgba(216,69,61,.35);
-      box-shadow: 0 14px 35px rgba(216,69,61,.18);
-      color: #0b0b0e;
-    }
-    .btn-primary:hover{border-color: rgba(231,200,74,.35)}
-    .iconbtn{
-      width:42px; height:42px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      display:grid; place-items:center;
-    }
+    .topbar .tb-item { display: inline-flex; align-items: center; gap: 7px; }
+    .topbar a { color: #fff; font-weight: 600; }
+    .topbar svg { width: 15px; height: 15px; opacity: 0.85; }
 
-    /* Hero */
-    .hero{
+    /* ---------- Header ---------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: saturate(180%) blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav {
+      min-height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+    .brand {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+    .brand .mark {
+      width: 38px; height: 38px;
+      border-radius: 11px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 17px;
+      font-weight: 800;
+      box-shadow: var(--shadow-sm);
+    }
+    .brand span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 15px;
+    }
+    .nav-links a { transition: color 0.15s ease; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta { display: flex; align-items: center; gap: 12px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 12px 20px;
+      font-weight: 700;
+      font-size: 15px;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+    .btn svg { width: 17px; height: 17px; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary { background: var(--accent); color: #fff; box-shadow: 0 8px 20px rgba(224, 81, 43, 0.30); }
+    .btn.primary:hover { background: var(--accent-dark); }
+    .btn.secondary { background: #fff; color: var(--ink); border-color: var(--line); box-shadow: var(--shadow-sm); }
+    .btn.secondary:hover { border-color: #cdd6e0; }
+    .btn.ghost { background: rgba(255,255,255,0.12); color: #fff; border-color: rgba(255,255,255,0.25); }
+    .btn.ghost:hover { background: rgba(255,255,255,0.2); }
+
+    /* ---------- Hero ---------- */
+    .hero {
       position: relative;
-      padding: 68px 0 46px;
+      background:
+        radial-gradient(900px 500px at 88% -10%, rgba(224, 81, 43, 0.10), transparent 60%),
+        radial-gradient(700px 500px at -5% 110%, rgba(21, 50, 79, 0.07), transparent 55%),
+        var(--bg);
+      padding: 70px 0 56px;
       overflow: hidden;
     }
-    .hero-video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.35; /* Adjust 0 (transparent) to 1 (opaque) */
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba(7,7,9,.88), rgba(7,7,9,.62) 55%, rgba(7,7,9,.9));
-      z-index: 2; /* Overlay gradient on top of video */
-    }
-    .hero-inner {
-      position: relative;
-      z-index: 3; /* Text on top of everything */
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:42px;
-      align-items:end;
-      min-height: 520px;
-    }
-    .hero-copy{
-      padding:18px 0 10px;
-    }
-    .hero-title{
-      font-size: var(--h1);
-      line-height:.9;
-      font-weight:900;
-      letter-spacing:.06em;
-      text-transform:uppercase;
-      margin:14px 0 16px;
-      text-shadow: 0 18px 60px rgba(0,0,0,.55);
-    }
-    .hero-sub{
-      max-width: 48ch;
-      color: rgba(242,242,244,.84);
-      font-size: 16px;
-      line-height:1.6;
-    }
-    .hero-ctas{display:flex; gap:12px; margin-top:22px; flex-wrap:wrap}
-    .hero-right{
-      display:flex;
-      justify-content:flex-end;
-      align-items:flex-end;
-      padding-bottom: 10px;
-    }
-    .hero-panel{
-      width:min(420px, 100%);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.10);
-      box-shadow: var(--shadow);
-      padding:18px 18px 16px;
-    }
-    .hero-panel .mono{color:var(--muted); font-size:12px}
-    .hero-panel h4{
-      margin:10px 0 8px;
-      text-transform:uppercase;
-      letter-spacing:.18em;
-      font-weight:900;
-      font-size:18px;
-    }
-    .hero-panel p{margin:0; color:rgba(242,242,244,.82); line-height:1.55; font-size:14px}
-    .microline{
-      height:2px; width:54px; background: var(--yellow);
-      margin-top:14px; opacity:.85;
-      box-shadow: 0 0 18px rgba(231,200,74,.25);
-    }
-
-    /* Section */
-    section{padding:70px 0;}
-    .section-title{
-      font-size: var(--h2);
-      line-height: .92;
-      font-weight: 900;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      margin: 0 0 18px;
-    }
-    .section-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 26px;
-      align-items:stretch;
-    }
-
-    /* Mission */
-    .panel{
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.10);
-      box-shadow: var(--shadow);
-    }
-    .mission-left{padding:30px}
-    .mission-left p{
-      color: rgba(242,242,244,.78);
-      line-height:1.75;
-      font-size:15px;
-      margin:0 0 16px;
-    }
-    .mission-grid{
-      grid-template-columns: 1fr;
-    }
-    .mission-right{
-      position:relative;
-      overflow:hidden;
-      border-radius: var(--radius);
-      min-height: clamp(520px, 68vh, 760px);
-      background:
-        linear-gradient(135deg, rgba(7,7,9,.1), rgba(7,7,9,.3)),
-        url("images/mission.jpg") center/100% auto no-repeat;
-      background-color:#0a0a0d;
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow: var(--shadow);
-    }
-    .mission-right::after{
-      display:none;
-    }
-
-    /* Cards */
-    .cards{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 18px;
-    }
-    .card{
-      padding:24px;
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
-      border:1px solid rgba(255,255,255,.10);
-      box-shadow: var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
-    .card::before{
-      content:"";
-      position:absolute; inset:-1px;
-      background: radial-gradient(400px 260px at 20% 0%, rgba(216,69,61,.20), transparent 60%);
-      opacity:.55;
-      pointer-events:none;
-    }
-    .card h3{
-      position:relative;
-      margin:0 0 10px;
-      font-size: 18px;
-      text-transform:uppercase;
-      letter-spacing:.18em;
-      font-weight: 900;
-      color: var(--red);
-    }
-    .card p{
-      position:relative;
-      margin:0;
-      color: rgba(242,242,244,.78);
-      line-height:1.7;
-      font-size:14px;
-    }
-    .card .microline{position:relative}
-
-    /* Logs (timeline-ish) */
-    .logs{
-      display:flex;
-      flex-direction:column;
-      gap:18px;
-      margin-top: 18px;
-    }
-    .log{
-      display:grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 18px;
-      align-items:stretch;
-    }
-    .log-media{
-      border-radius: var(--radius);
-      overflow:hidden;
-      background:
-        linear-gradient(180deg, rgba(7,7,9,.8), rgba(7,7,9,.15)),
-        url("images/log1.jpg") center/cover no-repeat;
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow: var(--shadow);
-      min-height: 320px;
-      position:relative;
-    }
-    .log-media::after{
-      display:none;
-    }
-    .log-panel{
-      padding:26px;
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.10);
-      box-shadow: var(--shadow);
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-    }
-    .tag{
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
-      font-size:12px;
-      letter-spacing:.28em;
-      text-transform:uppercase;
-      color: var(--yellow);
-    }
-    .log-panel h4{
-      margin:12px 0 10px;
-      font-size: 40px;
-      line-height: .92;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      font-weight: 900;
-    }
-    .log-panel p{
-      margin:0;
-      color: rgba(242,242,244,.78);
-      line-height:1.7;
-      font-size:14px;
-      max-width: 65ch;
-    }
-
-    /* CTA block */
-    .big-cta{
-      padding: 76px 0;
-      position:relative;
-    }
-    .big-cta .cta-box{
-      text-align:center;
-      padding: 56px 22px;
-      border-radius: var(--radius);
-      background:
-        radial-gradient(900px 400px at 50% 0%, rgba(255,255,255,.06), rgba(255,255,255,.02)),
-        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
-      border:1px solid rgba(255,255,255,.10);
-      box-shadow: var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
-    .big-cta .cta-box::after{
-      content:"";
-      position:absolute; inset:16px;
-      border:1px solid rgba(216,69,61,.16);
-      border-radius: calc(var(--radius) - 10px);
-      pointer-events:none;
-    }
-    .big-cta h3{
-      margin:0 0 10px;
-      font-size: clamp(34px, 4vw, 56px);
-      text-transform:uppercase;
-      font-weight: 900;
-      letter-spacing:.10em;
-      line-height:.95;
-    }
-    .big-cta p{
-      margin:0 auto 22px;
-      max-width: 75ch;
-      color: rgba(242,242,244,.78);
-      line-height:1.75;
-    }
-
-    /* Gallery grid */
-    .gallery{
-      display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap: 18px;
-      margin-top: 18px;
-    }
-    .g-left{
-      border-radius: var(--radius);
-      overflow:hidden;
-      border:1px solid rgba(216,69,61,.24);
-      box-shadow: var(--shadow);
-      background:
-        linear-gradient(180deg, rgba(7,7,9,.1), rgba(7,7,9,.85)),
-        url("images/gallery-left.jpg") center/cover no-repeat;
-      min-height: 460px;
-      position:relative;
-    }
-    .g-left .hud{
-      position:absolute; left:14px; right:14px; bottom:10px;
-      display:flex; justify-content:space-between;
-      font-size:12px; color: rgba(242,242,244,.75);
-    }
-    .g-right{
-      display:grid;
-      grid-template-rows: 1fr 1fr;
-      gap: 18px;
-    }
-    .g-tile{
-      border-radius: var(--radius);
-      overflow:hidden;
-      border:1px solid rgba(216,69,61,.24);
-      box-shadow: var(--shadow);
-      background:
-        linear-gradient(180deg, rgba(7,7,9,.1), rgba(7,7,9,.85)),
-        url("images/gallery-1.jpg") center/cover no-repeat;
-      min-height: 220px;
-      position:relative;
-    }
-    .g-tile:nth-child(2){
-      background-image:
-        linear-gradient(180deg, rgba(7,7,9,.1), rgba(7,7,9,.85)),
-        url("images/gallery-2.jpg");
-    }
-    .tile-meta{
-      position:absolute; left:12px; right:12px; bottom:10px;
-      display:flex; justify-content:space-between; gap:10px;
-      font-size:12px; color: rgba(242,242,244,.72);
-    }
-
-    /* Footer */
-    footer{
-      padding: 54px 0 36px;
-      border-top: 1px solid rgba(216,69,61,.22);
-      background: linear-gradient(180deg, rgba(0,0,0,.0), rgba(0,0,0,.35));
-    }
-    .footer-inner{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      align-items:center;
-    }
-    .footer-left{
-      display:flex;
-      align-items:center;
-      gap: 14px;
-      color: rgba(242,242,244,.82);
-    }
-    .footer-left small{display:block; color: var(--muted2); margin-top:4px}
-    .footer-right{
-      display:flex;
-      justify-content:flex-end;
-      gap: 10px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-    .social{
-      width:42px; height:42px;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      display:grid; place-items:center;
-      opacity:.9;
-    }
-    .social:hover{opacity:1; border-color: rgba(231,200,74,.25)}
-    .legal{
-      margin-top: 26px;
-      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
-      color: rgba(242,242,244,.52);
-      font-size: 12px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-    }
-
-    /* Instagram Feed */
-    .instagram-feed{
+    .hero-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero h1 {
+      margin: 18px 0 18px;
+      font-size: clamp(36px, 5vw, 58px);
+      line-height: 1.04;
+      letter-spacing: -1.2px;
+      font-weight: 800;
+    }
+    .hero h1 .hl { color: var(--accent); }
+    .hero p.lead {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 56ch;
+      margin: 0 0 28px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 30px; }
+
+    .hero-trust {
+      display: flex;
+      align-items: center;
       gap: 18px;
-      margin-top: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 14.5px;
     }
-    .instagram-feed img{
-      border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,.10);
-      box-shadow: var(--shadow);
-      transition: .3s transform, .3s opacity;
+    .hero-trust .dot { width: 5px; height: 5px; border-radius: 50%; background: #cdd6e0; }
+    .hero-trust strong { color: var(--ink); }
+
+    .hero-visual { position: relative; }
+    .hero-photo {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      min-height: 460px;
+      box-shadow: var(--shadow-lg);
+      background: #dfe5ec;
     }
-    .instagram-feed img:hover{
-      transform: translateY(-4px);
-      opacity: .9;
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; min-height: 460px; }
+
+    .float-card {
+      position: absolute;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .float-card .ic {
+      width: 40px; height: 40px; border-radius: 11px;
+      display: grid; place-items: center; flex-shrink: 0;
+      background: var(--accent-soft); color: var(--accent-dark);
+    }
+    .float-card .ic svg { width: 20px; height: 20px; }
+    .float-card .t { font-size: 12px; color: var(--muted); }
+    .float-card .v { font-weight: 700; font-size: 14.5px; font-family: "Plus Jakarta Sans", sans-serif; }
+    .float-card.tl { top: 22px; left: -18px; }
+    .float-card.br { bottom: 22px; right: -18px; }
+
+    /* ---------- Stat bar ---------- */
+    .statbar {
+      background: var(--bg-deep);
+      color: #fff;
+    }
+    .statbar .container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      padding: 26px 0;
+    }
+    .stat { text-align: center; padding: 6px 8px; }
+    .stat .num { font-family: "Plus Jakarta Sans", sans-serif; font-size: 30px; font-weight: 800; letter-spacing: -0.5px; }
+    .stat .num span { color: var(--accent); }
+    .stat .lbl { font-size: 13.5px; color: #aab8c8; margin-top: 2px; }
+
+    /* ---------- Sections ---------- */
+    section.block { padding: 76px 0; }
+    section.block.alt { background: var(--bg-soft); }
+    .section-head { max-width: 640px; margin: 0 auto 46px; text-align: center; }
+    .section-head h2 {
+      margin: 14px 0 12px;
+      font-size: clamp(28px, 3.6vw, 40px);
+      letter-spacing: -0.8px;
+      line-height: 1.1;
+    }
+    .section-head p { margin: 0; color: var(--muted); font-size: 17px; }
+
+    /* trust / about */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+    }
+    .pad { padding: 30px; }
+    .about-lead h3 { margin: 0 0 14px; font-size: 25px; letter-spacing: -0.4px; }
+    .about-lead p { color: var(--muted); margin: 0 0 14px; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
+    .tag {
+      background: var(--blue-soft);
+      color: var(--blue);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 13.5px;
+      font-weight: 600;
+    }
+    .fit-list { list-style: none; margin: 6px 0 0; padding: 0; }
+    .fit-list li {
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 13px 0; border-bottom: 1px solid var(--line);
+      color: var(--muted); font-size: 15px;
+    }
+    .fit-list li:last-child { border-bottom: 0; }
+    .fit-list .check {
+      flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+      background: var(--accent-soft); color: var(--accent-dark);
+      display: grid; place-items: center; margin-top: 2px;
+    }
+    .fit-list .check svg { width: 13px; height: 13px; }
+
+    /* categories */
+    .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .cat-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .cat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: #dbe3ec; }
+    .cat-photo { position: relative; height: 190px; overflow: hidden; }
+    .cat-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .cat-card:hover .cat-photo img { transform: scale(1.06); }
+    .cat-body { padding: 26px 28px 30px; position: relative; }
+    .cat-ic {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: grid; place-items: center; margin: -52px 0 16px;
+      position: relative;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #fff;
+      box-shadow: 0 8px 18px rgba(224, 81, 43, 0.35);
+      border: 3px solid #fff;
+    }
+    .cat-ic svg { width: 24px; height: 24px; }
+    .cat-card h3 { margin: 0 0 10px; font-size: 21px; letter-spacing: -0.3px; }
+    .cat-card p { margin: 0 0 16px; color: var(--muted); font-size: 15px; }
+    .mini-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .mini-tag { font-size: 12.5px; font-weight: 600; color: var(--muted); background: var(--bg-soft); border: 1px solid var(--line); padding: 5px 10px; border-radius: 8px; }
+
+    /* gallery */
+    .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .gitem {
+      position: relative; margin: 0; padding: 0; border: 0; cursor: pointer;
+      border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm);
+      aspect-ratio: 4 / 3; background: #e7ecf2;
+    }
+    .gitem img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block; }
+    .gitem:hover img { transform: scale(1.06); }
+    .gitem::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(15,27,45,0.30), transparent 45%);
+      opacity: 0; transition: opacity 0.2s ease;
+    }
+    .gitem:hover::after { opacity: 1; }
+    .gitem .zoom {
+      position: absolute; right: 10px; bottom: 10px; z-index: 2;
+      width: 32px; height: 32px; border-radius: 9px; display: grid; place-items: center;
+      background: rgba(255,255,255,0.92); color: var(--ink);
+      opacity: 0; transform: translateY(6px); transition: all 0.2s ease;
+    }
+    .gitem .zoom svg { width: 16px; height: 16px; }
+    .gitem:hover .zoom { opacity: 1; transform: translateY(0); }
+    .gitem.is-hidden { display: none; }
+
+    .gallery-nav {
+      display: flex; align-items: center; justify-content: center;
+      gap: 18px; margin-top: 26px;
+    }
+    .gnav-btn {
+      width: 46px; height: 46px; border-radius: 50%;
+      border: 1px solid var(--line); background: #fff; color: var(--ink);
+      display: grid; place-items: center; cursor: pointer;
+      box-shadow: var(--shadow-sm); transition: all 0.15s ease;
+    }
+    .gnav-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: translateY(-2px); }
+    .gnav-btn svg { width: 20px; height: 20px; }
+    .gallery-pages { font-weight: 700; font-size: 15px; color: var(--muted); min-width: 64px; text-align: center; font-family: "Plus Jakarta Sans", sans-serif; }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 100;
+      background: rgba(10,16,26,0.93); backdrop-filter: blur(4px);
+      display: none; align-items: center; justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 80vh; border-radius: 10px; box-shadow: var(--shadow-lg); }
+    .lb-btn {
+      position: absolute; background: rgba(255,255,255,0.12); color: #fff;
+      border: 1px solid rgba(255,255,255,0.28); border-radius: 50%;
+      width: 52px; height: 52px; cursor: pointer; display: grid; place-items: center;
+      transition: background 0.15s ease; -webkit-tap-highlight-color: transparent;
+    }
+    .lb-btn:hover { background: rgba(255,255,255,0.26); }
+    .lb-btn svg { width: 24px; height: 24px; }
+    .lb-prev { left: 20px; top: 50%; transform: translateY(-50%); }
+    .lb-next { right: 20px; top: 50%; transform: translateY(-50%); }
+    .lb-close { top: 20px; right: 20px; width: 46px; height: 46px; }
+    .lb-count {
+      position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%);
+      color: #fff; font-size: 14px; font-weight: 600;
+      background: rgba(0,0,0,0.45); padding: 7px 16px; border-radius: 999px;
     }
 
-    /* Reveal animation */
-    .reveal{opacity:0; transform: translateY(16px); transition: .6s ease;}
-    .reveal.on{opacity:1; transform:none;}
+    /* visit / contact */
+    .visit-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 24px; align-items: start; }
+    .map-card { overflow: hidden; padding: 0; }
+    .storefront { position: relative; height: 230px; overflow: hidden; }
+    .storefront img { width: 100%; height: 100%; object-fit: cover; }
+    .storefront-tag {
+      position: absolute; left: 16px; bottom: 16px;
+      background: rgba(15,27,45,0.82); color: #fff;
+      font-size: 13px; font-weight: 600; padding: 8px 13px; border-radius: 999px;
+      backdrop-filter: blur(4px);
+    }
+    .map-card .map-head { padding: 24px 28px 18px; }
+    .map-card h3 { margin: 0 0 6px; font-size: 22px; }
+    .map-card .addr { color: var(--muted); font-size: 15px; }
+    .map-card iframe { width: 100%; min-height: 440px; border: 0; display: block; }
+    .map-actions { display: flex; gap: 10px; padding: 18px 28px 24px; flex-wrap: wrap; }
 
-    /* Responsive */
-    @media (max-width: 980px){
-      .hero-inner{grid-template-columns: 1fr; min-height: unset; gap:18px}
-      .hero-right{justify-content:flex-start}
-      .section-grid{grid-template-columns: 1fr}
-      .cards{grid-template-columns: 1fr}
-      .log{grid-template-columns: 1fr}
-      .gallery{grid-template-columns: 1fr}
-      .footer-inner{grid-template-columns: 1fr}
-      .footer-right{justify-content:flex-start}
-      .nav{display:none;} /* simple mobile behavior */
+    .hours-card h3 { margin: 0 0 4px; font-size: 22px; }
+    .hours-card .sub { color: var(--muted); font-size: 14px; margin: 0 0 16px; }
+    .hours-list { display: grid; gap: 0; }
+    .hours-row {
+      display: flex; justify-content: space-between; gap: 14px;
+      padding: 11px 0; border-bottom: 1px solid var(--line);
+      font-size: 15px;
+    }
+    .hours-row:last-child { border-bottom: 0; }
+    .hours-row .day { color: var(--muted); font-weight: 500; }
+    .hours-row .time { font-weight: 700; }
+    .hours-row.closed .time { color: var(--accent-dark); }
+    .hours-row.today { background: var(--accent-soft); margin: 0 -14px; padding-left: 14px; padding-right: 14px; border-radius: 10px; border-bottom: 0; }
+    .hours-row.today .day { color: var(--accent-dark); font-weight: 700; }
+    .pay-row { margin-top: 20px; }
+    .pay-row .pl { font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); font-weight: 700; margin-bottom: 10px; }
+    .pay-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pay-tag { font-size: 13px; font-weight: 600; padding: 7px 13px; border-radius: 9px; background: var(--blue-soft); color: var(--blue); }
+
+    /* contact strip */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; }
+    .contact-card { padding: 28px; }
+    .contact-card .ic {
+      width: 46px; height: 46px; border-radius: 12px; margin-bottom: 16px;
+      display: grid; place-items: center;
+      background: var(--accent-soft); color: var(--accent-dark);
+    }
+    .contact-card .ic svg { width: 22px; height: 22px; }
+    .contact-card h3 { margin: 0 0 8px; font-size: 19px; }
+    .contact-card p, .contact-card a { color: var(--muted); font-size: 15px; margin: 4px 0; }
+    .contact-card a.big { color: var(--accent-dark); font-weight: 700; font-size: 18px; font-family: "Plus Jakarta Sans", sans-serif; }
+    .socials { display: flex; gap: 10px; margin-top: 6px; }
+    .socials a {
+      width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center;
+      background: var(--bg-soft); border: 1px solid var(--line); color: var(--muted);
+      transition: all 0.18s ease;
+    }
+    .socials a:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: translateY(-2px); }
+    .socials svg { width: 18px; height: 18px; }
+
+    /* CTA band */
+    .cta-band { background: linear-gradient(135deg, var(--blue), var(--bg-deep)); color: #fff; border-radius: 26px; padding: 50px; text-align: center; box-shadow: var(--shadow-lg); position: relative; overflow: hidden; }
+    .cta-band::after { content: ""; position: absolute; inset: 0; background: radial-gradient(600px 300px at 80% -20%, rgba(224,81,43,0.35), transparent 60%); pointer-events: none; }
+    .cta-band h2 { margin: 0 0 12px; font-size: clamp(26px, 3.4vw, 38px); letter-spacing: -0.6px; position: relative; }
+    .cta-band p { margin: 0 auto 26px; max-width: 52ch; color: #c4d0de; font-size: 17px; position: relative; }
+    .cta-band .hero-actions { justify-content: center; margin: 0; position: relative; }
+
+    /* footer */
+    footer { background: var(--bg-deep); color: #9fb0c2; padding: 50px 0 30px; font-size: 14.5px; }
+    .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 36px; margin-bottom: 34px; }
+    .foot-brand .brand { color: #fff; margin-bottom: 14px; }
+    .foot-brand p { max-width: 38ch; margin: 0; }
+    footer h4 { color: #fff; font-size: 15px; margin: 0 0 14px; font-family: "Plus Jakarta Sans", sans-serif; }
+    footer ul { list-style: none; margin: 0; padding: 0; }
+    footer ul li { margin-bottom: 9px; }
+    footer ul a:hover { color: #fff; }
+    .foot-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 22px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 13.5px; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 980px) {
+      .hero-grid, .about-grid, .visit-grid { grid-template-columns: 1fr; }
+      .cat-grid, .contact-grid { grid-template-columns: 1fr; }
+      .statbar .container { grid-template-columns: repeat(2, 1fr); gap: 22px 12px; }
+      .gallery { grid-template-columns: repeat(4, 1fr); }
+      .foot-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 560px) {
+      .topbar .tb-item.hide-sm { display: none; }
+      .float-card.tl { left: 8px; top: 8px; }
+      .float-card.br { right: 8px; bottom: 8px; }
+      .cta-band { padding: 36px 24px; }
+      .gallery { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .foot-grid { grid-template-columns: 1fr; }
+      section.block { padding: 56px 0; }
     }
   </style>
 </head>
+<body>
 
-<body class="hud-lines">
-  <!-- Header -->
-  <header class="header">
-    <div class="container header-inner">
-      <a class="brand" href="#home" aria-label="Chico State Formula SAE">
-        <div class="logo-mark" aria-hidden="true">
-          <img src="images/institutional-wildcat.jpg" alt="School logo">
-        </div>
-        <div>
-          <b>SAE Formula<br/>Chico State</b>
-          <span class="mono">Precision Motorsport Engineering</span>
-        </div>
-      </a>
-
-      <nav class="nav" aria-label="Primary">
-        <a href="#home" class="active">Home</a>
-        <a href="#portfolio">Portfolio Page</a>
-        <a href="#groups">Groups</a>
-        <a href="#events">Events</a>
-        <a href="#blog">Media</a>
-      </nav>
-
-      <div class="header-actions">
-        <a class="iconbtn" href="#contact" aria-label="Contact">
-          <span class="mono">@</span>
-        </a>
-        <a class="btn btn-primary" href="#join">Join Team</a>
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="tb-item hide-sm">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Open 7 days a week
       </div>
+      <div class="tb-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+        Call <a href="tel:14089752485">(408) 975-2485</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand">
+          <div class="mark">CC</div>
+          Central <span>&nbsp;Cash &amp; Carry</span>
+        </div>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#categories">Categories</a>
+          <a href="catalog.html">Catalog</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#visit">Visit</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-cta">
+          <button id="langToggle" class="btn secondary" type="button" aria-label="Cambiar a Español" style="padding:10px 15px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span id="langLabel">Español</span>
+          </button>
+          <a class="btn primary" href="tel:14089752485">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+            Call store
+          </a>
+        </div>
+      </nav>
     </div>
   </header>
 
-  <!-- Hero -->
-  <main id="home" class="hero">
-    <video class="hero-video" autoplay muted loop playsinline>
-      <source src="images/hero-video.mp4" type="video/mp4">
-    </video>
-    <div class="container hero-inner">
-      <div class="hero-copy reveal">
-        <div class="kicker mono">PRECISION MOTORSPORT ENGINEERING</div>
-        <div class="hero-title">SAE FORMULA CHICO<br/>STATE</div>
-        <div class="hero-sub mono">
-          Exploring the peak of automotive technology through rigorous design 
-          and a national endurance competition. 
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.2-6.3-4.6L5.7 21l2.3-7.2-6-4.4h7.6z"/></svg>
+            Wholesale supply &middot; San Jose
+          </span>
+          <h1>Bulk basics, kitchen gear &amp; packaging for <span class="hl">busy Bay Area businesses.</span></h1>
+          <p class="lead">
+            Central Cash &amp; Carry is a San Jose wholesale supply store stocking restaurant supplies, retail packaging, coffee &amp; catering goods, janitorial products, and party essentials &mdash; all under one roof, at prices that work for your business.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="tel:14089752485">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+              Call the store
+            </a>
+            <a class="btn secondary" href="#visit">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Get directions
+            </a>
+            <a class="btn secondary" href="#categories">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+              Browse categories
+            </a>
+          </div>
+          <div class="hero-trust">
+            <span><strong>20+ years</strong> serving the Bay Area</span>
+            <span class="dot"></span>
+            <span><strong>Open 7 days</strong> a week</span>
+            <span class="dot"></span>
+            <span><strong>Wholesale</strong> pricing</span>
+          </div>
         </div>
-        <div class="hero-ctas">
-          <a class="btn btn-primary" href="#join">JOIN THE TEAM</a>
-          <a class="btn" href="#portfolio">ABOUT US</a>
+
+        <div class="hero-visual">
+          <div class="hero-photo">
+            <img src="images/storefront2.jpg" alt="Front view of the Central Cash & Carry building in San Jose" />
+          </div>
+          <div class="float-card tl">
+            <div class="ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="t">Open today</div>
+              <div class="v">7 AM &ndash; 7 PM</div>
+            </div>
+          </div>
+          <div class="float-card br">
+            <div class="ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+            </div>
+            <div>
+              <div class="t">Everything in one stop</div>
+              <div class="v">100s of supplies</div>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="hero-right reveal">
-        <div class="hero-panel">
-          <div class="mono">[ SYSTEM STATUS : ACTIVE ]</div>
-          <h4>Current Prototype</h4>
-          <p class="mono">
-            Carbon-composite integration, tuned powertrain, and iterative aero development. 
-            Built to compete at the highest technical level in Formula SAE.
-          </p>
-          <div class="microline"></div>
-        </div>
+    <!-- Stat bar -->
+    <div class="statbar">
+      <div class="container">
+        <div class="stat"><div class="num">20<span>+</span></div><div class="lbl">Years in business</div></div>
+        <div class="stat"><div class="num">7</div><div class="lbl">Days open weekly</div></div>
+        <div class="stat"><div class="num">1</div><div class="lbl">Stop for it all</div></div>
+        <div class="stat"><div class="num">100<span>s</span></div><div class="lbl">Of products in stock</div></div>
       </div>
     </div>
+
+    <!-- About / trust -->
+    <section class="block" id="about">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Why businesses choose us</span>
+          <h2>The reliable local supplier the Bay Area has trusted for 20+ years</h2>
+          <p>One stop for front-of-house and back-of-house essentials &mdash; without juggling multiple specialty suppliers.</p>
+        </div>
+        <div class="about-grid">
+          <div class="card pad about-lead">
+            <h3>Simple, useful, and built for people who need supplies fast</h3>
+            <p>
+              Serving the San Francisco Bay Area for more than 20 years, with inventory that spans restaurant equipment and supplies, packaging materials, paper goods, coffee supplies, catering products, and janitorial basics.
+            </p>
+            <p>
+              Central Cash &amp; Carry is a go-to stop for restaurant owners, caterers, party planners, and small businesses &mdash; recommended for its wide selection of wholesale goods, competitive pricing, and convenient location off Monterey Road.
+            </p>
+            <div class="tag-row">
+              <div class="tag">Restaurant supplies</div>
+              <div class="tag">Retail packaging</div>
+              <div class="tag">Coffee &amp; catering</div>
+              <div class="tag">Party supplies</div>
+              <div class="tag">Janitorial basics</div>
+            </div>
+          </div>
+          <div class="card pad">
+            <h3 style="margin:0 0 6px; font-size:20px;">A good fit for</h3>
+            <ul class="fit-list">
+              <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Restaurants and takeout kitchens stocking up on cups, lids, cutlery, wraps, and containers</li>
+              <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Caterers and party planners grabbing servingware, table covers, trays, and cleanup supplies</li>
+              <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Small shops and local businesses after bags, paper goods, packaging, and bulk basics</li>
+              <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Teams that want one place for both front-of-house and back-of-house essentials</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="block alt" id="categories">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">What we stock</span>
+          <h2>Main categories</h2>
+          <p>From the kitchen line to the cleaning closet &mdash; here&rsquo;s a snapshot of what you&rsquo;ll find on the shelves.</p>
+        </div>
+        <div class="cat-grid">
+          <div class="cat-card">
+            <div class="cat-photo"><img src="images/cat-foodservice.jpg" alt="Takeout containers and foodservice supplies on the shelves" /></div>
+            <div class="cat-body">
+              <div class="cat-ic">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18"/><path d="M12 3v8"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M8 21h8"/><path d="M12 19v2"/></svg>
+              </div>
+              <h3>Foodservice &amp; restaurant</h3>
+              <p>Everything the kitchen and counter run on, from disposables to small equipment.</p>
+              <div class="mini-tags">
+                <span class="mini-tag">Cups &amp; lids</span><span class="mini-tag">Containers</span><span class="mini-tag">Pizza boxes</span><span class="mini-tag">Food wrap</span><span class="mini-tag">Glassware</span><span class="mini-tag">Brewers &amp; warmers</span>
+              </div>
+            </div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-photo"><img src="images/cat-packaging.jpg" alt="Bulk paper goods and packaging materials in stock" /></div>
+            <div class="cat-body">
+              <div class="cat-ic">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+              </div>
+              <h3>Packaging &amp; paper goods</h3>
+              <p>Bulk packaging and paper products for day-to-day operations.</p>
+              <div class="mini-tags">
+                <span class="mini-tag">Bags</span><span class="mini-tag">Can liners</span><span class="mini-tag">Napkins</span><span class="mini-tag">Tapes</span><span class="mini-tag">Plastic cutlery</span><span class="mini-tag">Table covers</span>
+              </div>
+            </div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-photo"><img src="images/cat-party.jpg" alt="Colorful party supplies and seasonal goods" /></div>
+            <div class="cat-body">
+              <div class="cat-ic">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/></svg>
+              </div>
+              <h3>Cleaning, party &amp; extras</h3>
+              <p>Janitorial supplies plus the extras that round out any event or shop.</p>
+              <div class="mini-tags">
+                <span class="mini-tag">Janitorial</span><span class="mini-tag">Dispensers</span><span class="mini-tag">Household items</span><span class="mini-tag">Party supplies</span><span class="mini-tag">Barbecue</span><span class="mini-tag">Bakery basics</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; margin-top:38px;">
+          <a class="btn primary" href="catalog.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            View full catalog
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="block" id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Inside the store</span>
+          <h2>A real cash-and-carry experience</h2>
+          <p>Take a walk through the aisles before you visit &mdash; tap any photo to see it full size and browse the selection.</p>
+        </div>
+        <div class="gallery" id="galleryGrid">
+          <button class="gitem" type="button" data-full="images/store-01.jpg" aria-label="View store photo 1"><img src="images/store-01.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 1" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-02.jpg" aria-label="View store photo 2"><img src="images/store-02.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 2" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-03.jpg" aria-label="View store photo 3"><img src="images/store-03.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 3" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-04.jpg" aria-label="View store photo 4"><img src="images/store-04.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 4" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-05.jpg" aria-label="View store photo 5"><img src="images/store-05.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 5" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-06.jpg" aria-label="View store photo 6"><img src="images/store-06.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 6" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-07.jpg" aria-label="View store photo 7"><img src="images/store-07.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 7" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-08.jpg" aria-label="View store photo 8"><img src="images/store-08.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 8" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-09.jpg" aria-label="View store photo 9"><img src="images/store-09.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 9" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-10.jpg" aria-label="View store photo 10"><img src="images/store-10.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 10" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-11.jpg" aria-label="View store photo 11"><img src="images/store-11.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 11" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-12.jpg" aria-label="View store photo 12"><img src="images/store-12.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 12" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-13.jpg" aria-label="View store photo 13"><img src="images/store-13.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 13" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-14.jpg" aria-label="View store photo 14"><img src="images/store-14.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 14" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-15.jpg" aria-label="View store photo 15"><img src="images/store-15.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 15" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-16.jpg" aria-label="View store photo 16"><img src="images/store-16.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 16" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-17.jpg" aria-label="View store photo 17"><img src="images/store-17.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 17" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-18.jpg" aria-label="View store photo 18"><img src="images/store-18.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 18" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-19.jpg" aria-label="View store photo 19"><img src="images/store-19.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 19" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-20.jpg" aria-label="View store photo 20"><img src="images/store-20.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 20" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-21.jpg" aria-label="View store photo 21"><img src="images/store-21.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 21" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-22.jpg" aria-label="View store photo 22"><img src="images/store-22.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 22" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-23.jpg" aria-label="View store photo 23"><img src="images/store-23.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 23" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-24.jpg" aria-label="View store photo 24"><img src="images/store-24.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 24" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-25.jpg" aria-label="View store photo 25"><img src="images/store-25.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 25" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-26.jpg" aria-label="View store photo 26"><img src="images/store-26.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 26" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-27.jpg" aria-label="View store photo 27"><img src="images/store-27.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 27" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-28.jpg" aria-label="View store photo 28"><img src="images/store-28.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 28" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-29.jpg" aria-label="View store photo 29"><img src="images/store-29.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 29" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-30.jpg" aria-label="View store photo 30"><img src="images/store-30.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 30" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-31.jpg" aria-label="View store photo 31"><img src="images/store-31.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 31" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-32.jpg" aria-label="View store photo 32"><img src="images/store-32.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 32" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-33.jpg" aria-label="View store photo 33"><img src="images/store-33.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 33" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+          <button class="gitem" type="button" data-full="images/store-34.jpg" aria-label="View store photo 34"><img src="images/store-34.jpg" loading="lazy" alt="Aisle and supplies inside Central Cash & Carry, photo 34" /><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span></button>
+        </div>
+        <div class="gallery-nav">
+          <button class="gnav-btn" id="galPrev" type="button" aria-label="Previous photos">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <span class="gallery-pages" id="galPages">1 / 5</span>
+          <button class="gnav-btn" id="galNext" type="button" aria-label="Next photos">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visit -->
+    <section class="block alt" id="visit">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Plan your visit</span>
+          <h2>Stop by the store</h2>
+          <p>Conveniently located on Monterey Road in San Jose, with easy parking and quick in-and-out.</p>
+        </div>
+        <div class="visit-grid">
+          <div class="card map-card">
+            <div class="storefront">
+              <img src="images/storefront.jpg" alt="Storefront entrance of Central Cash & Carry on Monterey Road, San Jose" />
+              <span class="storefront-tag">Look for the blue building on Monterey Rd</span>
+            </div>
+            <div class="map-head">
+              <h3>Central Cash &amp; Carry</h3>
+              <div class="addr">1919 Monterey Rd, Ste 10, San Jose, CA 95112</div>
+            </div>
+            <iframe
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=1919+Monterey+Rd+STE+10,+San+Jose,+CA+95112&z=13&output=embed">
+            </iframe>
+            <div class="map-actions">
+              <a class="btn primary" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=1919+Monterey+Rd+STE+10,+San+Jose,+CA+95112">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                Get directions
+              </a>
+              <a class="btn secondary" href="tel:14089752485">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+                (408) 975-2485
+              </a>
+            </div>
+          </div>
+
+          <div class="card pad hours-card">
+            <h3>Hours of operation</h3>
+            <p class="sub">Open 7 days a week</p>
+            <div class="hours-list">
+              <div class="hours-row"><span class="day">Monday</span><span class="time">7:00 AM &ndash; 7:00 PM</span></div>
+              <div class="hours-row"><span class="day">Tuesday</span><span class="time">7:00 AM &ndash; 7:00 PM</span></div>
+              <div class="hours-row"><span class="day">Wednesday</span><span class="time">7:00 AM &ndash; 7:00 PM</span></div>
+              <div class="hours-row"><span class="day">Thursday</span><span class="time">7:00 AM &ndash; 7:00 PM</span></div>
+              <div class="hours-row"><span class="day">Friday</span><span class="time">7:00 AM &ndash; 7:00 PM</span></div>
+              <div class="hours-row"><span class="day">Saturday</span><span class="time">8:00 AM &ndash; 6:00 PM</span></div>
+              <div class="hours-row"><span class="day">Sunday</span><span class="time">9:00 AM &ndash; 5:00 PM</span></div>
+            </div>
+            <div class="pay-row">
+              <div class="pl">Payments accepted</div>
+              <div class="pay-tags">
+                <span class="pay-tag">Visa</span>
+                <span class="pay-tag">Mastercard</span>
+                <span class="pay-tag">Cash</span>
+                <span class="pay-tag">Check</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="block" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Get in touch</span>
+          <h2>Contact Central Cash &amp; Carry</h2>
+          <p>Questions about stock or pricing? Give us a call or come see us in person.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="card contact-card">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></div>
+            <h3>Call us</h3>
+            <a class="big" href="tel:14089752485">(408) 975-2485</a>
+            <p>Mon&ndash;Fri 7 AM&ndash;7 PM &middot; Sat 8 AM&ndash;6 PM &middot; Sun 9 AM&ndash;5 PM</p>
+          </div>
+          <div class="card contact-card">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <h3>Visit</h3>
+            <p>1919 Monterey Rd, Ste 10<br />San Jose, CA 95112</p>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=1919+Monterey+Rd+STE+10,+San+Jose,+CA+95112" target="_blank" rel="noopener" style="color:var(--accent-dark); font-weight:600;">Open in Maps &rarr;</a>
+          </div>
+          <div class="card contact-card">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
+            <h3>Follow us</h3>
+            <p>Stay up to date with new stock and deals.</p>
+            <div class="socials">
+              <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg></a>
+              <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+              <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA band -->
+    <section class="block" style="padding-top:0;">
+      <div class="container">
+        <div class="cta-band">
+          <h2>Need supplies this week?</h2>
+          <p>Skip the run-around between specialty suppliers. Call ahead or stop by &mdash; we&rsquo;ll help you load up on everything in one trip.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="tel:14089752485">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+              Call (408) 975-2485
+            </a>
+            <a class="btn ghost" href="#visit">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Get directions
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- Mission -->
-  <section id="portfolio">
-    <div class="container">
-      <div class="section-grid mission-grid">
-        <div class="panel mission-left reveal">
-          <div class="section-title">MISSION<br/>OBJECTIVE</div>
-          <p class="mono">
-            Chico State Formula SAE is a high-performance collegiate engineering organization dedicated to technical excellence and competitive racing. 
-            We provide an easy-to-join platform for students to gain hands-on experience in automotive design, simulation, and fabrication, 
-            bridging the gap between hands-off classwork and real-world motorsport application.
-          </p>
-          <p class="mono">
-            Our mission is to engineer a track ready racing machine; preparing the next generation of Chico State FSAE members 
-            with skills and opportunities to excel in automotive engineering. Through an SAE national 
-            competition, we test the limits of our engineering in the fastest car possible.
-          </p>
-          <div class="microline"></div>
-        </div>
-
-        <div class="mission-right reveal" aria-label="Mission image panel"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Engineering Focus -->
-  <section id="groups">
-    <div class="container">
-      <div class="section-title reveal">ENGINEERING &<br/>DESIGN FOCUS</div>
-
-      <div class="cards">
-        <div class="card reveal">
-          <h3 class="mono">AERODYNAMICS</h3>
-          <p class="mono">
-            With a complete overhaul from previous years, a new full carbon fiber aero package allows the WR9B to maximize its 
-            downforce-to-drag ratio, while also minimizing weight. Obtaining a custom Chico State clearcoat and sparkle, 
-            the carbon fiber is polished to perfection and ready to race.
-          </p>
-          <div class="microline"></div>
-        </div>
-
-        <div class="card reveal">
-          <h3 class="mono">POWERTRAIN</h3>
-          <p class="mono">
-            The powertrain system is a critical component that directly influences performance, efficiency, and reliability. 
-            It encompasses the engine and all supporting subsystems responsible for converting fuel into usable mechanical power. 
-            Due to strict competition rules and the need for optimal performance within tight constraints, 
-            the design of the powertrain requires a careful balance of thermodynamics, fluid dynamics, and practical engineering considerations.
-          </p>
-          <div class="microline"></div>
-        </div>
-
-                <div class="card reveal">
-          <h3 class="mono">ELECTRICAL</h3>
-          <p class="mono">
-            Using a standalone ECU from Link, tuned and wired exclusively by students. We utilize a suite of sensors to monitor and 
-            optimize aspects of the engine’s performance well beyond what our Yamaha powertrain was originally capable of. 
-            This allows much greater freedom when designing powertrain components such as the restrictor, plenum, and exhaust size and lengths.
-          </p>
-          <div class="microline"></div>
-        </div>
-
-                  <div class="card reveal">
-          <h3 class="mono">SUSPENSION</h3>
-          <p class="mono">
-            The WR9B suspension system maximizes tire grip across cornering, braking, and acceleration while maintaining predictable vehicle balance. 
-            Precision control arms maintain optimal camber and tire contact through suspension travel, ensuring consistent performance at the limit. 
-            A compact, low-mounted damping system reduces center of gravity without compromising coilover efficiency. 
-            The setup is fully adjustable at the track, allowing quick changes to camber, caster, toe, and ride height.
-          </p>
-          <div class="microline"></div>
-        </div>
-
-                          <div class="card reveal">
-          <h3 class="mono">DRIVETRAIN</h3>
-          <p class="mono">
-            The brakes are the (arguably) most crucial part of the car, being a main tech event at competition, 
-            the new system utilizes 2 Tilton Master cylinders with high performance Wilwood brake calipers with brake force of over 5000lbs. 
-            This is utilized by a 4:1 pedal ratio, giving the driver amazing feel and adjustability. Although not much has changed since previous years, 
-            the reliable drivetrain does have a new chainguard to protect the driver as they weave through the track. 
-          </p>
-          <div class="microline"></div>
-        </div>
-
-        <div class="card reveal">
-          <h3 class="mono">CHASSIS</h3>
-          <p class="mono">
-            The chassis is the skeleton of the car, and provides a platform for other subteams' success. 
-            Working with the Suspension and Aero team this frame has been optimized to maximize performance 
-            while also reducing weight by 20%. Every frame that is brought to competition cannot be used again. 
-            This provides the chassis team an engineering challenge of designing a better frame for every single car. 
-          </p>
-          <div class="microline"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Competition Logs -->
-  <section id="events">
-    <div class="container">
-      <div class="section-title reveal">EVENTS</div>
-
-      <div class="logs">
-        <div class="log">
-          <div class="log-media reveal" style="background-image:
-            linear-gradient(180deg, rgba(7,7,9,.1), rgba(7,7,9,.85)),
-            url('images/log1.jpg');">
-          </div>
-          <div class="log-panel reveal">
-            <div class="tag mono">[ COMMUNITY ]</div>
-            <h4>K1<br/>SPEED</h4>
-            <p class="mono">
-              Chico State’s Formula SAE team takes trips every semester to K1 Speed. The event encourages camaraderie inside the team, 
-              improves team morale, and encourages healthy competition. It helps new members get engaged into the club in a relaxed environment. 
-              Driving go-karts is one of the favorite events among members. 
-            </p>
-          </div>
-        </div>
-
-        <div class="log">
-          <div class="log-panel reveal">
-            <div class="tag mono">[ COMMUNITY ]</div>
-            <h4>NORCAL<br/>SHOOTOUT</h4>
-            <p class="mono">
-              Competing at Thunderhill Raceway, the NorCal Shootout served as a high-intensity proving ground for dynamic performance and system reliability. 
-              Real-world track data validated aerodynamic balance, suspension tuning, and power delivery under sustained load conditions, 
-              strengthening our competitive foundation heading into national events.
-            </p>
-          </div>
-          <div class="log-media reveal" style="background-image:
-            linear-gradient(180deg, rgba(7,7,9,.1), rgba(7,7,9,.85)),
-            url('images/log2.jpg');
-            background-position: center, center;
-            background-size: auto, 100% auto;
-            background-repeat: no-repeat, no-repeat;">
-          </div>
-        </div>
-
-                <div class="log">
-          <div class="log-media reveal" style="background-image:
-            linear-gradient(180deg, rgba(7,7,9,.1), rgba(7,7,9,.85)),
-            url('images/log3.jpg');">
-          </div>
-          <div class="log-panel reveal">
-            <div class="tag mono">[ COMPETITION ]</div>
-            <h4>FSAE<br/>MICHIGAN</h4>
-            <p class="mono">
-              Formula SAE Michigan represents the pinnacle of collegiate motorsport engineering. Competing against top international programs, 
-              our team underwent rigorous technical inspection, design defense, and dynamic endurance challenges. 
-              The event tested not only performance metrics, but also reliability, strategic execution, and engineering discipline at the highest level.
-            </p>
-          </div>
-        </div>
-
-                <div class="log">
-          <div class="log-panel reveal">
-            <div class="tag mono">[ CURRENT OPERATIVE ]</div>
-            <h4>PEAK<br/>PERFORMANCE</h4>
-            <p class="mono">
-              Today, Chico State Formula SAE represents the pinnacle of giant-killers in collegiate automotive engineering. Our current prototype 
-              features carbon-composite integration and a custom-tuned powertrain that will secure top-tier finishes. 
-              We remain dedicated to relentless performance and hands-on growth.
-            </p>
-          </div>
-          <div class="log-media reveal" style="background-image:
-            linear-gradient(180deg, rgba(7,7,9,.1), rgba(7,7,9,.85)),
-            url('images/log4.jpg');">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Big CTA -->
-  <section id="join" class="big-cta">
-    <div class="container">
-      <div class="cta-box reveal">
-        <div class="section-title" style="margin:0 0 12px;">FUEL THE FUTURE OF<br/>MOTORSPORT ENGINEERING</div>
-        <p class="mono">
-          Join a legacy of technical excellence. Whether you're a student designer ready to innovate
-          or a partner looking to support the next generation of engineers—your journey starts here.
-        </p>
-        <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
-          <a class="btn btn-primary" href="partners.html">PARTNER WITH US</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Instagram Feed -->
-  <section id="blog">
-    <div class="container">
-      <div class="section-title reveal">LATEST FEED</div>
-      <div id="instafeed" class="instagram-feed">
-        <iframe src="https://www.instagram.com/chico_state_formula/embed" width="100%" height="800" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
-      </div>
-    </div>
-  </section>
-
   <!-- Footer -->
-  <footer id="contact">
+  <footer>
     <div class="container">
-      <div class="footer-inner">
-        <div class="footer-left">
-          <div class="logo-mark" aria-hidden="true">
-            <img src="images/institutional-wildcat.jpg" alt="School logo">
-          </div>
-          <div>
-            <div class="mono" style="letter-spacing:.22em; text-transform:uppercase; color:rgba(231,200,74,.9); font-size:12px;">
-              [ COMMUNICATIONS_PORTAL ]
-            </div>
-            <div style="margin-top:6px; font-weight:800;">California State University, Chico</div>
-<!--<small class="mono">formula@csuchico.edu</small>-->
-          </div>
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <div class="brand"><div class="mark">CC</div> Central&nbsp;<span style="color:var(--accent)">Cash &amp; Carry</span></div>
+          <p>San Jose&rsquo;s one-stop wholesale supply store for restaurants, caterers, party planners, and local businesses &mdash; serving the Bay Area for over 20 years.</p>
         </div>
-
-        <div class="footer-right">
-          <!-- Swap hrefs with real links -->
-          <a class="social" href="https://www.facebook.com/chicoformula/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><span class="mono">f</span></a>
-          <a class="social" href="https://instagram.com/chico_state_formula" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><span class="mono">ig</span></a>
-          <a class="social" href="https://www.tiktok.com/@wildcat.racing1" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><span class="mono">tt</span></a>
-          <a class="social" href="https://discord.gg/YOUR_INVITE" target="_blank" rel="noopener noreferrer" aria-label="Discord"><span class="mono">d</span></a>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#categories">Categories</a></li>
+            <li><a href="catalog.html">Catalog</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#visit">Visit &amp; hours</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Visit us</h4>
+          <ul>
+            <li>1919 Monterey Rd, Ste 10</li>
+            <li>San Jose, CA 95112</li>
+            <li><a href="tel:14089752485">(408) 975-2485</a></li>
+            <li>Mon&ndash;Sun
+          </ul>
         </div>
       </div>
-
-      <div class="legal mono">
-        <span>© <span id="year"></span> // CHICO STATE FORMULA SAE // SYSTEM_STATUS: ACTIVE</span>
-        <span>INTERFACE_v1.0.0</span>
+      <div class="foot-bottom">
+        <div>&copy; <span id="yr">2026</span> Central Cash &amp; Carry. All rights reserved.</div>
+        <div>Wholesale supply &middot; San Jose</div>
       </div>
     </div>
   </footer>
 
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lb-btn lb-close" id="lbClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <img id="lbImg" src="" alt="Central Cash & Carry store photo" />
+    <button class="lb-btn lb-next" id="lbNext" aria-label="Next">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="lb-count" id="lbCount"></div>
+  </div>
+
   <script>
-    // Year
-    document.getElementById("year").textContent = new Date().getFullYear();
+    (function () {
+      // Highlight today's row in the hours table
+      var idx = new Date().getDay(); // 0 Sun ... 6 Sat
+      var map = { 1:0, 2:1, 3:2, 4:3, 5:4, 6:5, 0:6 };
+      var rows = document.querySelectorAll('.hours-row');
+      var r = rows[map[idx]];
+      if (r) r.classList.add('today');
+      var yr = document.getElementById('yr');
+      if (yr) yr.textContent = new Date().getFullYear();
 
-    // Simple nav active state based on scroll
-    const navLinks = Array.from(document.querySelectorAll(".nav a"));
-    const sections = navLinks.map(a => document.querySelector(a.getAttribute("href"))).filter(Boolean);
+      // Lightbox gallery
+      var items = Array.prototype.slice.call(document.querySelectorAll('.gitem'));
+      var srcs = items.map(function (b) { return b.getAttribute('data-full'); });
 
-    const setActive = () => {
-      const y = window.scrollY + 120;
-      let idx = 0;
-      for (let i = 0; i < sections.length; i++){
-        if (sections[i].offsetTop <= y) idx = i;
+      // Paged gallery (8 per page = 4x2)
+      var PAGE_SIZE = 8;
+      var pageCount = Math.ceil(items.length / PAGE_SIZE);
+      var page = 0;
+      var galPages = document.getElementById('galPages');
+      function renderPage() {
+        var start = page * PAGE_SIZE;
+        items.forEach(function (b, i) {
+          b.classList.toggle('is-hidden', i < start || i >= start + PAGE_SIZE);
+        });
+        if (galPages) galPages.textContent = (page + 1) + ' / ' + pageCount;
       }
-      navLinks.forEach(a => a.classList.remove("active"));
-      if (navLinks[idx]) navLinks[idx].classList.add("active");
-    };
-    window.addEventListener("scroll", setActive, {passive:true});
-    setActive();
+      function go(dir) { page = (page + dir + pageCount) % pageCount; renderPage(); }
+      var gp = document.getElementById('galPrev'), gn = document.getElementById('galNext');
+      if (gp) gp.addEventListener('click', function () { go(-1); });
+      if (gn) gn.addEventListener('click', function () { go(1); });
+      renderPage();
 
-    // Reveal on scroll
-    const revealEls = document.querySelectorAll(".reveal");
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add("on");
+      var lb = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lbImg');
+      var lbCount = document.getElementById('lbCount');
+      var cur = 0;
+
+      function show(i) {
+        cur = (i + srcs.length) % srcs.length;
+        lbImg.src = srcs[cur];
+        lbCount.textContent = (cur + 1) + ' / ' + srcs.length;
+      }
+      function open(i) { show(i); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; }
+      function close() { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; }
+
+      items.forEach(function (b, i) { b.addEventListener('click', function () { open(i); }); });
+      document.getElementById('lbClose').addEventListener('click', close);
+      document.getElementById('lbPrev').addEventListener('click', function () { show(cur - 1); });
+      document.getElementById('lbNext').addEventListener('click', function () { show(cur + 1); });
+      lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+      document.addEventListener('keydown', function (e) {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape') close();
+        else if (e.key === 'ArrowLeft') show(cur - 1);
+        else if (e.key === 'ArrowRight') show(cur + 1);
       });
-    }, {threshold: 0.12});
-    revealEls.forEach(el => io.observe(el));
+    })();
+  </script>
+
+  <!-- ============================================================
+       Spanish / English toggle
+       Translations live in the T object below (English : Spanish).
+       To edit wording, change the Spanish value on the right.
+       ============================================================ -->
+  <script>
+  (function () {
+    var T = {
+      "Call": "Llamar",
+      "About": "Nosotros",
+      "Categories": "Categorías",
+      "Catalog": "Catálogo",
+      "Gallery": "Galería",
+      "Visit": "Visítanos",
+      "Contact": "Contacto",
+      "Call store": "Llamar",
+      "Wholesale supply · San Jose": "Mayoreo · San Jose",
+      "Bulk basics, kitchen gear & packaging for": "Provisiones al por mayor, equipo de cocina y empaque para",
+      "busy Bay Area businesses.": "negocios ocupados del Área de la Bahía.",
+      "Central Cash & Carry is a San Jose wholesale supply store stocking restaurant supplies, retail packaging, coffee & catering goods, janitorial products, and party essentials — all under one roof, at prices that work for your business.": "Central Cash & Carry es una tienda de mayoreo en San Jose con suministros para restaurantes, empaque comercial, productos de café y catering, artículos de limpieza y esenciales para fiestas — todo bajo un mismo techo y a precios que funcionan para tu negocio.",
+      "Call the store": "Llama a la tienda",
+      "Get directions": "Cómo llegar",
+      "Browse categories": "Ver categorías",
+      "20+ years": "20+ años",
+      "serving the Bay Area": "sirviendo al Área de la Bahía",
+      "Open 7 days": "Abierto 7 días",
+      "a week": "a la semana",
+      "Wholesale": "Precios",
+      "pricing": "de mayoreo",
+      "Open today": "Abierto hoy",
+      "Everything in one stop": "Todo en un solo lugar",
+      "100s of supplies": "Cientos de productos",
+      "Years in business": "Años en el negocio",
+      "Days open weekly": "Días abiertos por semana",
+      "Stop for it all": "Lugar para todo",
+      "Of products in stock": "Productos en existencia",
+      "Why businesses choose us": "Por qué los negocios nos eligen",
+      "The reliable local supplier the Bay Area has trusted for 20+ years": "El proveedor local confiable en el que el Área de la Bahía ha confiado por más de 20 años",
+      "One stop for front-of-house and back-of-house essentials — without juggling multiple specialty suppliers.": "Un solo lugar para lo esencial del área de servicio y de cocina — sin tener que lidiar con varios proveedores especializados.",
+      "Simple, useful, and built for people who need supplies fast": "Simple, útil y hecho para quienes necesitan suministros rápido",
+      "Serving the San Francisco Bay Area for more than 20 years, with inventory that spans restaurant equipment and supplies, packaging materials, paper goods, coffee supplies, catering products, and janitorial basics.": "Sirviendo al Área de la Bahía de San Francisco por más de 20 años, con inventario que abarca equipo y suministros para restaurantes, materiales de empaque, productos de papel, insumos de café, productos de catering y artículos básicos de limpieza.",
+      "Central Cash & Carry is a go-to stop for restaurant owners, caterers, party planners, and small businesses — recommended for its wide selection of wholesale goods, competitive pricing, and convenient location off Monterey Road.": "Central Cash & Carry es el lugar de referencia para dueños de restaurantes, personal de catering, organizadores de fiestas y pequeños negocios — recomendado por su amplia selección de productos al por mayor, precios competitivos y su conveniente ubicación sobre Monterey Road.",
+      "Restaurant supplies": "Suministros para restaurantes",
+      "Retail packaging": "Empaque comercial",
+      "Coffee & catering": "Café y catering",
+      "Party supplies": "Artículos para fiestas",
+      "Janitorial basics": "Limpieza básica",
+      "A good fit for": "Ideal para",
+      "Restaurants and takeout kitchens stocking up on cups, lids, cutlery, wraps, and containers": "Restaurantes y cocinas de comida para llevar que se surten de vasos, tapas, cubiertos, envolturas y contenedores",
+      "Caterers and party planners grabbing servingware, table covers, trays, and cleanup supplies": "Personal de catering y organizadores de fiestas que buscan vajilla desechable, manteles, charolas y artículos de limpieza",
+      "Small shops and local businesses after bags, paper goods, packaging, and bulk basics": "Tiendas pequeñas y negocios locales que necesitan bolsas, productos de papel, empaque y básicos al por mayor",
+      "Teams that want one place for both front-of-house and back-of-house essentials": "Equipos que quieren un solo lugar para lo esencial del área de servicio y de cocina",
+      "What we stock": "Lo que tenemos",
+      "Main categories": "Categorías principales",
+      "From the kitchen line to the cleaning closet — here’s a snapshot of what you’ll find on the shelves.": "De la línea de cocina al clóset de limpieza — un vistazo de lo que encontrarás en los estantes.",
+      "Foodservice & restaurant": "Restaurante y servicio de comida",
+      "Everything the kitchen and counter run on, from disposables to small equipment.": "Todo lo que mueve la cocina y el mostrador, desde desechables hasta equipo pequeño.",
+      "Cups & lids": "Vasos y tapas",
+      "Containers": "Contenedores",
+      "Pizza boxes": "Cajas de pizza",
+      "Food wrap": "Envoltura",
+      "Glassware": "Cristalería",
+      "Brewers & warmers": "Cafeteras y calentadores",
+      "Packaging & paper goods": "Empaque y productos de papel",
+      "Bulk packaging and paper products for day-to-day operations.": "Empaque y productos de papel al por mayor para el día a día.",
+      "Bags": "Bolsas",
+      "Can liners": "Bolsas de basura",
+      "Napkins": "Servilletas",
+      "Tapes": "Cintas",
+      "Plastic cutlery": "Cubiertos de plástico",
+      "Table covers": "Manteles",
+      "Cleaning, party & extras": "Limpieza, fiestas y más",
+      "Janitorial supplies plus the extras that round out any event or shop.": "Artículos de limpieza más los extras que complementan cualquier evento o negocio.",
+      "Janitorial": "Limpieza",
+      "Dispensers": "Dispensadores",
+      "Household items": "Artículos del hogar",
+      "Barbecue": "Barbacoa",
+      "Bakery basics": "Repostería básica",
+      "View full catalog": "Ver catálogo completo",
+      "Inside the store": "Dentro de la tienda",
+      "A real cash-and-carry experience": "Una verdadera experiencia de autoservicio",
+      "Take a walk through the aisles before you visit — tap any photo to see it full size and browse the selection.": "Recorre los pasillos antes de visitarnos — toca cualquier foto para verla en grande y explorar la selección.",
+      "Plan your visit": "Planea tu visita",
+      "Stop by the store": "Visita la tienda",
+      "Conveniently located on Monterey Road in San Jose, with easy parking and quick in-and-out.": "Ubicada convenientemente sobre Monterey Road en San Jose, con estacionamiento fácil y entrada y salida rápidas.",
+      "Look for the blue building on Monterey Rd": "Busca el edificio azul en Monterey Rd",
+      "Hours of operation": "Horario",
+      "Open 7 days a week": "Abierto 7 días a la semana",
+      "Monday": "Lunes",
+      "Tuesday": "Martes",
+      "Wednesday": "Miércoles",
+      "Thursday": "Jueves",
+      "Friday": "Viernes",
+      "Saturday": "Sábado",
+      "Sunday": "Domingo",
+      "Closed": "Cerrado",
+      "Payments accepted": "Formas de pago",
+      "Cash": "Efectivo",
+      "Check": "Cheque",
+      "Get in touch": "Comunícate",
+      "Contact Central Cash & Carry": "Contacta a Central Cash & Carry",
+      "Questions about stock or pricing? Give us a call or come see us in person.": "¿Preguntas sobre existencias o precios? Llámanos o ven a vernos en persona.",
+      "Call us": "Llámanos",
+      "Mon–Fri 7 AM–7 PM · Sat 8 AM–6 PM · Sun 9 AM–5 PM": "Lun–Vie 7 AM–7 PM · Sáb 8 AM–6 PM · Dom 9 AM–5 PM",
+      "Open in Maps →": "Abrir en Maps →",
+      "Follow us": "Síguenos",
+      "Stay up to date with new stock and deals.": "Mantente al día con nuevos productos y ofertas.",
+      "Need supplies this week?": "¿Necesitas suministros esta semana?",
+      "Skip the run-around between specialty suppliers. Call ahead or stop by — we’ll help you load up on everything in one trip.": "Olvídate de ir de proveedor en proveedor. Llama antes o visítanos — te ayudamos a surtir todo en un solo viaje.",
+      "Call (408) 975-2485": "Llama al (408) 975-2485",
+      "San Jose’s one-stop wholesale supply store for restaurants, caterers, party planners, and local businesses — serving the Bay Area for over 20 years.": "La tienda de mayoreo de San Jose para restaurantes, catering, organizadores de fiestas y negocios locales — sirviendo al Área de la Bahía por más de 20 años.",
+      "Explore": "Explorar",
+      "Visit & hours": "Visita y horario",
+      "Visit us": "Visítanos",
+      "Mon–Sun": "Lun–Dom",
+      "Central Cash & Carry. All rights reserved.": "Central Cash & Carry. Todos los derechos reservados."
+    };
+
+    var titleEN = document.title;
+    var titleES = "Central Cash & Carry | Suministros para restaurantes y empaque en San Jose";
+    var norm = function (s) { return s.replace(/\s+/g, ' ').trim(); };
+    var btn = document.getElementById('langToggle');
+    var label = document.getElementById('langLabel');
+    if (!btn || !label) return;
+
+    var nodes = [];
+    var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue || !n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentNode ? n.parentNode.nodeName : '';
+        if (p === 'SCRIPT' || p === 'STYLE' || p === 'NOSCRIPT') return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while (node = w.nextNode()) { node.__en = node.nodeValue; nodes.push(node); }
+
+    function apply(lang) {
+      nodes.forEach(function (n) {
+        if (n === label.firstChild) return; // manage the toggle label separately
+        var en = n.__en;
+        if (lang === 'es') {
+          var es = T[norm(en)];
+          if (es !== undefined) {
+            var lead = (en.match(/^\s*/) || [''])[0];
+            var trail = (en.match(/\s*$/) || [''])[0];
+            n.nodeValue = lead + es + trail;
+          }
+        } else {
+          n.nodeValue = en;
+        }
+      });
+      document.documentElement.lang = lang === 'es' ? 'es' : 'en';
+      document.title = lang === 'es' ? titleES : titleEN;
+      label.textContent = lang === 'es' ? 'English' : 'Español';
+      btn.setAttribute('aria-label', lang === 'es' ? 'Switch to English' : 'Cambiar a Español');
+      try { localStorage.setItem('ccc-lang', lang); } catch (e) {}
+    }
+
+    var cur = 'en';
+    try { if (localStorage.getItem('ccc-lang') === 'es') cur = 'es'; } catch (e) {}
+    if (cur === 'es') apply('es'); else label.textContent = 'Español';
+
+    btn.addEventListener('click', function () { cur = (cur === 'es') ? 'en' : 'es'; apply(cur); });
+  })();
   </script>
 </body>
 </html>
